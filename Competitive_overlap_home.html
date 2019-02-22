@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  padding: 10px 100px 10px 100px;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  padding: 10px;
+  text-align: center;
+  background-color: white;
+  background-image: url(sonic-drive-in_logo.jpg), url(Wendy_logo.jpg);
+  background-size: contain;
+  background-position: right bottom, left top;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.header h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 5px 0px 5px 0px;
+}
+
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 33.33%;
+}
+.midcolumn {   
+  float: left;
+  width: 33.33%;
+  padding-left: 20px;
+}
+.rightcolumn {   
+  float: left;
+  width: 33.33%;
+  padding-left: 20px;
+}
+
+/* Right column */
+/* .rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+} */
+.center{
+  text-align: center;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>QSR Market Analysis</h1>
+  <h1>Sonic Drive-In vs. Wendy's</h1>
+</div>
+
+<div class="row">
+  <div class="card">
+    <h2>Final Technical Report</h2>
+    <p><strong>Project description:</strong> This project evaluates the market overlap of two popular quick-service restaurants in Texas: Sonic Drive-In and Wendy's.</p>
+    <p><strong>Extraction:</strong> We collected each brands address data on their respective websites via the python programming language, as well various libraries, including: BeautifulSoup, requests, etc. After scraping the data, we exported the Wendy's data set into a csv file, then read in the csv in order to fullfill the project requirements.</p>
+    <p><strong>Transformation:</strong> First, we converted both data sets into a Pandas dataframe. As for cleaning the Sonic data, we did the following: (1) Renamed columns headings, (2) Dropped duplicate addresses, (3) Removed extra commoms, and (4) Excluded any non-Texas states. Then, we merged the two separate dataframes with a innerjoin. Next, we utilized a .group_by() method by zipcode. Finally, we used a .count() to calculate the market overlap.</p>
+    <p><strong>Load:</strong> We decided to use MySQL, a relational database, for our production database. This decision was made to take advantage of MySQL's table based database, which stores data in columns and row formats. While there are benefits to non-relational databases, such as cheaper costs and ease  of scale, our data fit this option best.</p>
+  </div>    
+  <div class="leftcolumn">
+    <div class="card">
+      <h2 class="center">Total Restaurants by Brand</h2>
+      <h2 class="center">(in Texas)</h2>
+      <div class="fakeimg" style="height:300px;">{{image}}</div>
+      <p>Description ...</p>
+    </div>
+  </div>
+  <div class="midcolumn">
+    <div class="card">
+      <h2 class="center">Overlap for Each Brand</h2>
+      <h2 class="center">(in Texas)</h2>
+      <div class="fakeimg" style="height:300px;">{{image}}</div>
+      <p>Description ...</p>
+    </div>
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2 class="center">Highest Concentration, by City</h2>
+      <h2 class="center">(in Texas)</h2>
+      <div class="fakeimg" style="height:300px;">{{image}}</div>
+      <p>Description ...</p>
+    </div>
+  </div>    
+</div>
+<div class="row">
+<div class="card">
+    <h2>Author Bios:</h2>
+    <h5>Erik Swedeen</h5>
+    <p>Some text..</p>
+    <h5>Brijesh Patel</h5>
+    <p>Some text..</p>
+    <h5>Philip May</h5>
+    <p>Some text..</p>        
+</div>
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+
+</body>
+</html>
