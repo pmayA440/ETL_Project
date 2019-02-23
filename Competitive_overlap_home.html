@@ -17,7 +17,7 @@ body {
   padding: 10px;
   text-align: center;
   background-color: white;
-  background-image: url(sonic-drive-in_logo.jpg), url(Wendy_logo.jpg);
+  background-image: url(assets/sonic-drive-in_logo.jpg), url(assets/Wendy_logo.jpg);
   background-size: contain;
   background-position: right bottom, left top;
   background-repeat: no-repeat, no-repeat;
@@ -87,16 +87,18 @@ h2 {
 <div class="row">
   <div class="card">
     <h2>Final Technical Report</h2>
-    <p><strong>Project Description:</strong> This project counts the number of locations of two popular quick-service restaurants in Texas - Sonic Drive-In and Wendy's - and evaluates their competitive market overlap.</p>
-    <p><strong>Extraction:</strong> We collected each brands' address data from their respective websites via the python programming language, as well various libraries, including: BeautifulSoup, requests, etc. After scraping the data, we exported the Wendy's data set into a csv file, then read in the csv in order to fullfill the project requirements.</p>
-    <p><strong>Transformation:</strong> First, we converted both data sets into a Pandas dataframe. As for cleaning the Sonic data, we did the following: (1) Renamed columns headings, (2) Dropped duplicate addresses, (3) Removed extra commoms, and (4) Excluded any non-Texas states. Then, we merged the two separate dataframes with a innerjoin. Next, we utilized a .group_by() method by zipcode. Finally, we used a .count() to calculate the market overlap.</p>
-    <p><strong>Load:</strong> We decided to use MySQL, a relational database, for our production database. This decision was made to take advantage of MySQL's table based database, which stores data in columns and row formats. While there are benefits to non-relational databases, such as cheaper costs and ease  of scale, our data fit this option best.</p>
+    <p><strong>Project description:</strong> This project evaluates the market overlap of two popular quick-service restaurants in Texas: Sonic Drive-In and Wendy's.</p>
+    <br>
+    <p><u><strong>ETL Breakdown:</u> </strong> </P>
+    <p><strong>Extraction:</strong> We collected each restaurant's address information by web scraping their respective store locations page. In order to do this chromedriver was utitlized to navigate to each restaurant's store location page which contained a list of various links for each city in Texas where a store is located. Chromedriver and Python looping were utilized to navigate to each city's page containing each store address for extraction. To create the web scraping scripts, multiple Python libraries were used including: BeautifulSoup, requests, and datetime. After scraping the data, we exported the Wendy's data set into a csv file, then read in the csv in order to fullfill the project requirements.</p>
+    <p><strong>Transformation:</strong> First, we converted both data sets into a Pandas dataframe. As for cleaning the Sonic data, we did the following: (1) Renamed columns headings, (2) Dropped duplicate addresses, (3) Removed extra commas, and (4) Excluded any non-Texas states. Then, we merged the two separate dataframes with an innerjoin. Next, we utilized a .group_by() method by zipcode. Finally, we used a .count() to calculate the market overlap.</p>
+    <p><strong>Load:</strong> We decided to use MySQL, a relational database, for our production database. This decision was made to take advantage of MySQL's table based database, which stores data in columns and row formats. While there are benefits to non-relational databases, such as cheaper costs and ease of scale, our data fit this option best. In order to load the data the Python libraries SQLAlchemy, PyMySQL, and Pandas were used in the following process. (1) SQLAlchemy was used to create and connect an engine. (2) PyMySQL was used to create our database "etl_project_db". (3) Pandas was used to perform a df.to_sql import of the merged Pandas dataframe to create a populated table in the "etl_project_db" database.</p> 
   </div>    
   <div class="leftcolumn">
     <div class="card">
       <!-- <h2 class="center">Total Restaurants by Brand</h2>
       <h2 class="center">(in Texas)</h2> -->
-      <img src="Total_Count.png" style="width:100%">
+      <img src="assets/Total_Count.png" style="width:100%">
     </div>
   </div>
   <div class="midcolumn">
@@ -104,7 +106,7 @@ h2 {
       <!-- <h2 class="center">Sonic Drive-In</h2>
       <h2 class="center">Competitive Market Analysis</h2>
       <h2 class="center">(in Texas)</h2> -->
-      <img src="Sonics_percent_overlap.png" style="width:100%">
+      <img src="assets/Sonics_percent_overlap.png" style="width:100%">
       </div>
   </div>
   <div class="rightcolumn">
@@ -112,7 +114,7 @@ h2 {
       <!-- <h2 class="center">Wendy's</h2>
       <h2 class="center">Competitive Market Analysis</h2>
       <h2 class="center">(in Texas)</h2> -->
-      <img src="Wendys_percent_overlap.png" style="width:100%">
+      <img src="assets/Wendys_percent_overlap.png" style="width:100%">
     </div>
   </div>    
 </div>
